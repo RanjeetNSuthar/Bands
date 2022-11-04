@@ -78,8 +78,71 @@ const addBand = async (req, res) => {
   }
 };
 
+const editBand = async (req, res) => {
+  try {
+    console.log("inside edit band :>> ", req.body);
+    // finding the band from the given band id from url
+    const band = await Band.findById(req.params.bid);
+    // checking if the user id from the founded band is same as from the url
+    if (band.userid == req.params.uid) {
+      try {
+        console.log("user id matched");
+        // finding the band details and updating it in the db
+        const updatedBand = await Band.findByIdAndUpdate(
+          req.params.bid,
+          {
+            $set: req.body,
+          },
+          { new: true }
+        );
+        console.log("updated :>> ", updatedBand);
+        // flashing the success msg
+        req.flash("success", "Band Details Updated Successfully.");
+        // redirecting to home after successfull updation of details
+        res.status(201).redirect("/api/home");
+      } catch (err) {
+        res.status(500).json(err);
+      }
+    } else {
+      req.flash("error", "You can update only your band details");
+      res.status(500).redirect("/api/home");
+    }
+  } catch (err) {
+    // if any error occurs inside try block then flashing an error msg and redirecting to home
+    req.flash("error", "Couldn't update Band Details");
+    res.status(500).redirect("/api/home");
+  }
+};
+
+const deleteBand = async (req, res) => {
+  try {
+    // finding the band to be deleted from the bands db
+    console.log("inside delete route", req.body);
+    const band = await Band.findById(req.params.bid);
+    // if userid of band and the uid of url matches then make the delete operation
+    if (band.userid == req.params.uid) {
+      try {
+        // deleting the band using the mongoose delete() method
+        await band.delete();
+        // after successfull deletion of band flash success msg and redirect to home page
+        req.flash("success", "Band has been deleted Successfully!");
+        res.status(200).redirect("/api/home");
+      } catch (err) {
+        req.flash("error", "Band Couldn't be deleted, Try Again.");
+        res.status(500).redirect(`/api/home`);
+      }
+    }
+  } catch (err) {
+    req.flash("error", "Band Couldn't be deleted, Try Again.");
+    res.status(500).redirect("/api/home");
+  }
+};
+
 module.exports = {
   addBand,
   allBands,
   userSpecificBands,
+  deleteBand,
+  editBand
 };
+
