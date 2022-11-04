@@ -19,4 +19,10 @@ router.get("/bands/explore", allBands);
 //CREATE Band from received data
 router.post("/:uid/bands", addBand);
 
+//UPDATE BAND DETAILS: PUT
+router.put("/:uid/bands/band/:bid", editBand);
+
+//DELETE BAND: DELETE
+router.delete("/:uid/bands/band/:bid", deleteBand);
+
 module.exports = router;
