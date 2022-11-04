@@ -1,7 +1,5 @@
 # nodejs-bands-project
 
-Link to Website: https://mg-bands.herokuapp.com
-
 This project allows you to create a new band, update the details , delete the band and much more. This project has authentication.
 
 1. Clone the project or download zip file.
