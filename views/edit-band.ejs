@@ -1,0 +1,77 @@
+<%- include('./partials/header') %>
+<%- include('./partials/navbar') %>
+
+<div class="edit-band container">
+  <div class="edit-band-header">
+    <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+    <h1 style="display: inline; text-align: center">Edit Band</h1>
+  </div>
+  <form
+    action="http://localhost:3000/api/users/<%=uid%>/bands/band/<%=bid%>?_method=PUT "
+    method="post"
+    id="edit-band"
+  >
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="name"
+        name="name"
+        class="form-control"
+        id="name"
+        placeholder="Enter name"
+        value="<%= band.name %> "
+      />
+
+      <label for="desc">Description</label>
+      <textarea
+        name="desc"
+        class="form-control"
+        id="desc"
+        row="3"
+        cols="50"
+        style="overflow-y: hidden"
+        placeholder="Enter Description"
+      >
+<%= band.desc %>
+    </textarea
+      >
+
+      <label for="origin">Origin</label>
+      <input
+        type="text"
+        name="origin"
+        class="form-control"
+        id="origin"
+        value="<%= band.origin %>"
+      />
+
+      <label for="rating">Rating</label>
+      <Select name="rating" value="<%=band.rating%>" style="width: 100%">
+        <Option>1</Option>
+        <Option>2</Option>
+        <Option>3</Option>
+        <Option>4</Option>
+        <Option>5</Option>
+      </Select>
+    </div>
+    
+    <div class="d-flex" style="margin-top: 10px;">
+      <div class="flex-grow-1">
+        <button type="button" class="btn btn-warning">
+          <a href="/api/home" style="text-decoration: none; color: #fff">Back</a>
+        </button> 
+      </div>
+      <button type="submit" class="btn btn-primary " style="margin-right: 5px;">Save</button>
+      
+    </form>
+    <form
+    action="http://localhost:3000/api/users/<%=uid%>/bands/band/<%=bid%>?_method=DELETE "
+    method="post"
+    >
+    <button type="submit" class="btn btn-danger">Delete</button>
+  </form>
+</div>
+  </div>
+</div>
+
+<%- include('./partials/footer') %>

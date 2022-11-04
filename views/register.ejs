@@ -1,0 +1,75 @@
+<%- include('./partials/header') %>
+
+<div class="register container">
+  <div class="Registertitle">
+    <i class="fas fa-sign-in-alt fa-2x"></i>
+    <h1 style="display: inline; text-align: center">Register</h1>
+  </div>
+  <form
+    action="http://localhost:3000/api/users"
+    method="post"
+    id="register-form"
+  >
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="name"
+        name="name"
+        class="form-control"
+        id="name"
+        placeholder="Enter name"
+      />
+
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        id="email"
+        aria-describedby="emailHelp"
+        placeholder="Enter email"
+      />
+
+      <label for="organization">Organization</label>
+      <input
+        type="name"
+        name="organization"
+        class="form-control"
+        id="org"
+        placeholder="Enter Your Organization name"
+        autocomplete="false"
+      />
+
+      <label for="dob">Date Of Birth</label>
+      <input type="date" name="dob" class="form-control" id="dob" />
+
+      <label for="password">Password</label>
+      <input
+        type="password"
+        name="password"
+        class="form-control"
+        id="password"
+        placeholder="*********"
+      />
+      <label for="cpassword">Confirm Password</label>
+      <input
+        type="password"
+        name="cpassword"
+        class="form-control"
+        id="cpassword"
+        placeholder="*********"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary" style="width: 100%">
+      Register
+    </button>
+  </form>
+  <p>
+    Have an account?
+    <span style="color: red"
+      ><a href="http://localhost:3000/api/login">Login</a></span
+    >
+  </p>
+</div>
+
+<%- include('./partials/footer') %>

@@ -1,0 +1,63 @@
+<%- include('./partials/header') %> <%- include('./partials/navbar') %>
+<div class="register container">
+  <div class="Registertitle">
+    <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+    <h1 style="display: inline; text-align: center">Profile</h1>
+  </div>
+  <form
+    action="http://localhost:3000/api/users/user/<%=id%>?_method=PUT"
+    method="post"
+    id="profile"
+  >
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="name"
+        name="name"
+        class="form-control"
+        id="name"
+        placeholder="Enter name"
+        value="<%=name%> "
+      />
+
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        id="email"
+        aria-describedby="emailHelp"
+        placeholder="Enter email"
+        value="<%= email %>"
+      />
+
+      <label for="organization">Organization</label>
+      <input
+        type="name"
+        name="organization"
+        class="form-control"
+        id="org"
+        placeholder="Enter Your Organization name"
+        autocomplete="false"
+        value="<%= organization %>"
+      />
+
+      <label for="dob">Date Of Birth</label>
+      <input
+        type="date"
+        name="dob"
+        class="form-control"
+        id="dob"
+        value="<%= dob %>"
+      />
+    </div>
+    <div style="display: flex; justify-content: space-between">
+      <button type="button" class="btn btn-primary">
+        <a href="/api/home" style="text-decoration: none; color: white">Back</a>
+      </button>
+      <button type="submit" class="btn btn-success">Save</button>
+    </div>
+  </form>
+</div>
+
+<%- include('./partials/footer') %>

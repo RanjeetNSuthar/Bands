@@ -1,0 +1,52 @@
+body {
+  /* background-image: url("./images/band-concert-background-image.jpg"); */
+  background-image: url("./images/crowd.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
+.container {
+  margin: 40px auto;
+  max-width: 768px;
+  background: #fff;
+  border: 1px solid gray;
+  box-shadow: gray;
+}
+
+input {
+  margin-bottom: 10px;
+}
+
+.Registertitle {
+  text-align: center;
+  border: none;
+}
+
+.band-title {
+  display: flex;
+  justify-content: space-between;
+}
+.bands {
+  max-width: 1200px;
+}
+.band {
+  margin: 5px 0;
+}
+.origin {
+  font-size: 10px;
+  color: darkgray;
+}
+.send-otp {
+  max-width: 600px;
+  border: 1px solid tomato;
+}
+.send-otp-header,
+.edit-band-header {
+  text-align: center;
+  margin: 20px;
+}
+label,
+button {
+  margin: 5px 0;
+}

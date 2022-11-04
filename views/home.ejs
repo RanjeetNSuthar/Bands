@@ -1,0 +1,29 @@
+<%- include('./partials/header') %> <%- include('./partials/navbar') %>
+<div class="container bands">
+  <% if(bands.length ){ %> <%console.log(bands) %> <% bands.forEach(band => { %>
+  <a
+    href="/api/users/<%=uid%>/bands/band/<%=band.id%>"
+    style="text-decoration: none; color: black"
+  >
+    <div class="band">
+      <div class="band-title">
+        <h3><%= band.name %></h3>
+        <div class="rating">
+          <% for(let rating = 0; rating < band.rating; rating++) {%>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <% } %>
+        </div>
+      </div>
+      <p><%= band.desc %></p>
+      <p class="origin"><%= band.origin %></p>
+    </div>
+  </a>
+  <hr />
+  <% }) %> <% } else { %>
+  <div style="text-align: center; border: none">
+    <h1>You Have No Bands</h1>
+    <p><a href="/api/users/bands">Click here </a> to add new bands.</p>
+  </div>
+  <% } %>
+</div>
+<%- include('./partials/footer') %>

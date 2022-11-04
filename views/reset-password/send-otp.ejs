@@ -1,0 +1,42 @@
+<%- include('../partials/header') %>
+
+<div class="container send-otp">
+  <div class="container-fluid send-otp-header">
+    <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+    <h2 style="display: inline; text-align: center">Reset Password</h2>
+  </div>
+  <form
+    action="http://localhost:3000/api/users/send-otp?_method=PUT"
+    method="post"
+    id="send-otp"
+  >
+    <div class="form-group">
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        id="email"
+        placeholder="Enter email"
+      />
+    </div>
+    <button type="submit" class="btn btn-danger" style="width: 100%">
+      Send Otp
+    </button>
+  </form>
+  <p>
+    Have an account?
+    <span style="color: red"
+      ><a href="http://localhost:3000/api/login">Login</a></span
+    >
+  </p>
+  <p>
+    Don't have an account?
+    <span
+      ><a href="http://localhost:3000/api/users" style="color: red"
+        >Register</a
+      ></span
+    >
+  </p>
+</div>
+
+<%- include('../partials/footer') %>

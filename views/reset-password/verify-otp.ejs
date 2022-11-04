@@ -1,0 +1,88 @@
+<%- include('../partials/header') %>
+
+<div class="container send-otp">
+  <div class="container-fluid send-otp-header">
+    <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+    <h2 style="display: inline; text-align: center">Reset Password</h2>
+  </div>
+  <form
+    action="http://localhost:3000/api/users/verify-otp"
+    method="post"
+    id="verify-otp"
+  >
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        id="email"
+        placeholder="Enter email"
+        value="<%= email %> "
+      />
+      <input
+        type="number"
+        name="otp"
+        class="form-control"
+        id="otp"
+        placeholder="Enter OTP"
+      />
+    </div>
+    <button type="submit" class="btn btn-danger">Verify Otp</button>
+  </form>
+  <p>
+    Have an account?
+    <span style="color: red"
+      ><a href="http://localhost:3000/api/login">Login</a></span
+    >
+  </p>
+  <p>
+    Don't have an account?
+    <span><a href="/api/users" style="color: red">Register</a></span>
+  </p>
+</div>
+
+<!-- <script>
+  async function postFormDataAsJson({ url, formData }) {
+    const plainFormData = Object.fromEntries(formData.entries());
+    const formDataJsonString = JSON.stringify(plainFormData);
+
+    const fetchOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: formDataJsonString,
+      redirect: "follow",
+    };
+
+    const response = await fetch(url, fetchOptions);
+
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      throw new Error(errorMessage);
+    }
+
+    return response.json();
+  }
+
+  async function handleFormSubmit(event) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const url = form.action;
+
+    try {
+      const formData = new FormData(form);
+      const responseData = await postFormDataAsJson({ url, formData });
+
+      console.log("responsedata:", { responseData });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const verifyOtpForm = document.getElementById("verify-otp");
+  verifyOtpForm.addEventListener("submit", handleFormSubmit);
+</script> -->
+<%- include('../partials/footer') %>
