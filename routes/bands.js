@@ -5,6 +5,11 @@ const {
 } = require("../Controllers/BandController");
 const Band = require("../models/Bands");
 
+// getting user specific bands
+router.get("/bands", async (req, res) => {
+  res.redirect(`/api/users/${req.session.user._id}/bands`);
+});
+
 // rendering the add band page
 router.get("/:uid/bands", async (req, res) => {
   res.render("add-band", { id: req.params.uid });
